@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            font-family: 'Roboto', Arial, sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 18px;
+            box-shadow: 0 6px 32px rgba(44, 62, 80, 0.15);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeSlideIn 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s forwards;
+        }
+        @keyframes fadeSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h2 {
+            color: #2d3a4b;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .result {
+            color: #27ae60;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            background: linear-gradient(90deg, #5b9df9 0%, #3c8ce7 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.75rem 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 0.7rem;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #3c8ce7 0%, #5b9df9 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 6px 18px rgba(44, 62, 80, 0.13);
+        }
+        .iris-img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1.1rem;
+            box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+            animation: fadeSlideIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) 0.1s backwards;
+        }
+        .iris-desc {
+            color: #34495e;
+            font-size: 1.01rem;
+            margin-top: 0.7rem;
+            margin-bottom: 1.2rem;
+            background: rgba(236, 240, 241, 0.45);
+            border-radius: 8px;
+            padding: 0.7rem 0.8rem;
+            display: inline-block;
+        }
+        .feature-card {
+            background: rgba(236, 240, 241, 0.45);
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin: 1.2rem 0 0.7rem 0;
+            display: inline-block;
+            box-shadow: 0 1px 6px rgba(44, 62, 80, 0.08);
+        }
+        .feature-title {
+            font-weight: 700;
+            color: #3c8ce7;
+            margin-bottom: 0.5rem;
+            font-size: 1.08rem;
+        }
+        .feature-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 0.3rem;
+        }
+        .feature-table th, .feature-table td {
+            border: 1px solid #bfc9d1;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.98rem;
+        }
+        .feature-table th {
+            background: #e0eafc;
+            color: #34495e;
+            font-weight: 700;
+        }
+        .feature-table td {
+            background: #fff;
+            color: #34495e;
+        }
+        .fun-fact-card {
+            background: linear-gradient(90deg, #f9e79f 0%, #f5cba7 100%);
+            border-radius: 10px;
+            padding: 0.7rem 1rem;
+            margin: 1.1rem 0 0.7rem 0;
+            font-size: 1.01rem;
+            color: #7d6608;
+            box-shadow: 0 1px 6px rgba(44, 62, 80, 0.08);
+            display: inline-block;
+        }
+        .fun-fact-title {
+            font-weight: 700;
+            color: #b9770e;
+            margin-right: 0.4rem;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+                max-width: 98vw;
+            }
+            .iris-img {
+                width: 70px;
+                height: 70px;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+            .result {
+                font-size: 1.05rem;
+            }
+            .iris-desc, .feature-card, .fun-fact-card {
+                font-size: 0.97rem;
+                padding: 0.5rem 0.5rem;
+            }
+            .feature-table th, .feature-table td {
+                padding: 0.2rem 0.3rem;
+                font-size: 0.93rem;
+            }
+            .btn {
+                font-size: 1rem;
+                padding: 0.6rem 0;
+            }
+        }
+        @media (max-width: 900px) {
+            .container {
+                max-width: 98vw;
+            }
+            .feature-card, .fun-fact-card {
+                padding: 0.7rem 0.7rem;
+            }
+            .feature-table th, .feature-table td {
+                font-size: 0.96rem;
+            }
+        }
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% set ns = namespace(img_url=None, feature_table=None, fun_fact=None, desc=None) %}
+        {% if result %}
+            {% if 'Setosa' in result %}
+                {% set ns.img_url = 'https://live.staticflickr.com/65535/51376589362_b92e27ae7a_b.jpg' %}
+                {% set ns.feature_table = [
+                    ('Sepal Length', '4.3 – 5.8 cm'),
+                    ('Sepal Width', '2.3 – 4.4 cm'),
+                    ('Petal Length', '1.0 – 1.9 cm'),
+                    ('Petal Width', '0.1 – 0.6 cm')
+                ] %}
+                {% set ns.fun_fact = 'Iris setosa is the only iris species native to both Asia and North America.' %}
+                {% set ns.desc = 'Small, delicate flowers with light purple petals. Setosa has the shortest petals and is often found in northern regions.' %}
+            {% elif 'Versicolor' in result %}
+                {% set ns.img_url = 'https://live.staticflickr.com/3910/14466323561_de42e2bfce_b.jpg' %}
+                {% set ns.feature_table = [
+                    ('Sepal Length', '4.9 – 7.0 cm'),
+                    ('Sepal Width', '2.0 – 3.4 cm'),
+                    ('Petal Length', '3.0 – 5.1 cm'),
+                    ('Petal Width', '1.0 – 1.8 cm')
+                ] %}
+                {% set ns.fun_fact = 'Iris versicolor is also called the Blue Flag and is the provincial flower of Quebec, Canada.' %}
+                {% set ns.desc = 'Known as the Blue Flag iris, Versicolor features medium-sized blue-violet flowers and grows in wetlands.' %}
+            {% elif 'Virginica' in result %}
+                {% set ns.img_url = 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Iris_virginica.jpg' %}
+                {% set ns.feature_table = [
+                    ('Sepal Length', '4.9 – 7.9 cm'),
+                    ('Sepal Width', '2.2 – 3.8 cm'),
+                    ('Petal Length', '4.5 – 6.9 cm'),
+                    ('Petal Width', '1.4 – 2.5 cm')
+                ] %}
+                {% set ns.fun_fact = 'Iris virginica is often found in marshy areas and can tolerate flooding.' %}
+                {% set ns.desc = 'Virginica has the largest petals, with deep violet-blue flowers, and is native to North American marshes.' %}
+            {% endif %}
+            {% if ns.img_url %}
+                <img src="{{ ns.img_url }}" alt="Predicted Iris Flower" class="iris-img">
+            {% endif %}
+            <h2>Prediction Result</h2>
+            <div class="result">{{ result }}</div>
+            {% if ns.desc %}
+                <div class="iris-desc">{{ ns.desc }}</div>
+            {% endif %}
+            {% if ns.feature_table %}
+            <div class="feature-card">
+                <div class="feature-title">Typical Feature Ranges</div>
+                <table class="feature-table">
+                    <tr><th>Feature</th><th>Range</th></tr>
+                    {% for name, val in ns.feature_table %}
+                    <tr><td>{{ name }}</td><td>{{ val }}</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% if ns.fun_fact %}
+            <div class="fun-fact-card">
+                <span class="fun-fact-title">Fun Fact:</span> {{ ns.fun_fact }}
+            </div>
+            {% endif %}
+        {% else %}
+            <h2>Prediction Result</h2>
+            <div class="result" style="color:#e74c3c;">No prediction result available.</div>
+        {% endif %}
+        <a href="/predict" class="btn">Predict Another</a>
+        <a href="/" class="btn" style="background: #eee; color: #3c8ce7; font-weight: 500;">Back to Home</a>
+    </div>
+</body>
+</html> 
